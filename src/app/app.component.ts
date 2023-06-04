@@ -20,10 +20,7 @@ export class AppComponent {
 
   movies: any[] = [];
   constructor(
-    // private toasterService: ToasterService,
-    // private router: Router,
     private efccmservice: EfccmService,
-    // private activatetRoute: ActivatedRoute
   ) { }
   handleImport($event: any) {
     const files = $event.target.files;
@@ -39,33 +36,26 @@ export class AppComponent {
           const rows = utils.sheet_to_json(wb.Sheets[sheets[0]]);
           this.movies = rows;
 
-          // this.efccmservice.found(this.movies[0].Movie)..pipe(
-          //     retry(3), // retry a failed request up to 3 times
-          //     catchError(this.handleError)
-          //   )
+          for (let i = 0; i < this.movies.length; i++) {
+            this.efccmForm.value.efccm = this.movies[i].Movie;
 
+            this.efccmservice.found(this.efccmForm.value).subscribe((response: any) => {
+              console.log(response);
+              if (response == 'not found'){
+                this.movies[i].Badge = 'not found';
+                this.movies[i].Emetteur = 'not found';
+              }else {
+                this.movies[i].Badge = response.modele;
+                this.movies[i].Emetteur = response.emt;
+              }
 
-          for(let i = 0; i < this.movies.length; i++) {
-          // console.log(this.movies[1].Movie);
-           this.efccmForm.value.efccm = this.movies[i].Movie;
-          // console.log('efccm', this.efccmForm.value.efccm);
-
-          this.efccmservice.found( this.efccmForm.value).subscribe((response: any) => {
-            // console.log(this.movies[i].Movie , response)
-            this.movies[i].Badge = response;
-
-            //this.toasterService.pop('success', 'Success', response.message);
-            //this.router.navigate(['/login']);
-          },
-            (error) => {
-              console.log(error);
-              //this.toasterService.pop('error', 'Error', error.error.message);
-            }
-          );
+            },
+              (error) => {
+                console.log(error);
+              }
+            );
 
           }
-          // this.movies[1].Badge = 'C303081'
-          //  console.log(this.movies.length);
 
         }
       }
@@ -78,6 +68,7 @@ export class AppComponent {
     const headings = [[
       'Movie',
       'Badges',
+      'Emetteur',
       // 'Director',
       // 'Rating'
     ]];
