@@ -16,11 +16,12 @@ import { EfccmService } from '../services/efccm.service';
 export class EfccmComponent implements OnInit {
 
   efccmForm = new FormGroup({
-    efccm: new FormControl('')
+    efccm: new FormControl(''),
+    table: new FormControl('')
   })
 
 
-  movies: any[] = [];
+  tables: any[] = [];
   constructor(
     private efccmservice: EfccmService,
   ) { }
@@ -36,19 +37,20 @@ export class EfccmComponent implements OnInit {
 
         if (sheets.length) {
           const rows = utils.sheet_to_json(wb.Sheets[sheets[0]]);
-          this.movies = rows;
+          this.tables = rows;
+          console.log('table type', this.tables[1].table);
 
-          for (let i = 0; i < this.movies.length; i++) {
-            this.efccmForm.value.efccm = this.movies[i].Movie;
+          for (let i = 0; i < this.tables.length; i++) {
+            this.efccmForm.value.efccm = this.tables[i].table;
 
             this.efccmservice.found(this.efccmForm.value).subscribe((response: any) => {
-              console.log(response);
+           //   console.log(response);
               if (response == 'not found') {
-                this.movies[i].Badge = 'not found';
-                this.movies[i].Emetteur = 'not found';
+                this.tables[i].Badge = 'not found';
+                this.tables[i].Emetteur = 'not found';
               } else {
-                this.movies[i].Badge = response.modele;
-                this.movies[i].Emetteur = response.emt;
+                this.tables[i].Badge = response.modele;
+                this.tables[i].Emetteur = response.emt;
               }
 
             },
@@ -68,7 +70,7 @@ export class EfccmComponent implements OnInit {
 
   handleExport() {
     const headings = [[
-      'Movie',
+      'table',
       'Badges',
       'Emetteur',
       // 'Director',
@@ -77,9 +79,9 @@ export class EfccmComponent implements OnInit {
     const wb = utils.book_new();
     const ws: any = utils.json_to_sheet([]);
     utils.sheet_add_aoa(ws, headings);
-    utils.sheet_add_json(ws, this.movies, { origin: 'A2', skipHeader: true });
+    utils.sheet_add_json(ws, this.tables, { origin: 'A2', skipHeader: true });
     utils.book_append_sheet(wb, ws, 'Report');
-    writeFile(wb, 'Movie Report.xlsx');
+    writeFile(wb, 'Badges Report.xlsx');
   }
 
 

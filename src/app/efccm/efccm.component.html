@@ -1,15 +1,39 @@
-<main>
+<main class="container">
+    <!-- <div class="container"> -->
+    <div class="row">
+        <form  [formGroup]="efccmForm">
+
+        
+        <div class="col offset-3">
+            <label for="table-select">Choose a table:</label>
+
+            <select name="tables" id="table-select"  formControlName="table">
+                <option value="">--Please choose an option--</option>
+                <option value="TOC">TOC</option>
+                <option value="efccm">EFC-CM</option>
+                <option value="badge">Badge</option>
+                  </select>
+
+        </div>
+    </form>
+    </div>
     <div class="row mb-2 mt-5">
+
         <div class="col-sm-6 offset-3">
             <div class="row">
                 <div class="col-md-6">
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" name="file" class="custom-file-input" id="inputGroupFile" required (change)="handleImport($event)"
+                            <input type="file" name="file" class="custom-file-input" id="inputGroupFile" required
+                                (change)="handleImport($event)"
                                 accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                             <label class="custom-file-label" for="inputGroupFile">Choose file</label>
                         </div>
+
                     </div>
+                </div>
+                <div>
+
                 </div>
                 <div class="col-md-6">
                     <button (click)="handleExport()" class="btn btn-primary float-right">
@@ -19,13 +43,14 @@
             </div>
         </div>
     </div>
+    <!-- </div> -->
     <div class="row">
         <div class="col-sm-6 offset-3">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
-                        <th scope="col">Movie</th>
+                        <th scope="col">Table</th>
                         <th scope="col">Badge</th>
                         <th scope="col">Emetteur</th>
                         <!-- <th scope="col">Director</th>
@@ -33,19 +58,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <ng-container *ngIf="movies.length; else elseBlock">
-                        <tr *ngFor="let movie of movies; let i = index">
+                    <ng-container *ngIf="tables.length; else elseBlock">
+                        <tr *ngFor="let table of tables; let i = index">
                             <th scope="row">{{ i + 1 }}</th>
-                            <td>{{ movie.Movie }}</td>
-                            <td>{{ movie.Badge }}</td>
-                            <td>{{ movie.Emetteur }}</td>
+                            <td>{{ table.table }}</td>
+                            <td>{{ table.Badge }}</td>
+                            <td>{{ table.Emetteur }}</td>
                             <!-- <td>{{ movie.Director }}</td>
                             <td><span class="badge bg-warning text-dark">{{ movie.Rating }}</span></td> -->
                         </tr>
                     </ng-container>
                     <ng-template #elseBlock>
                         <tr>
-                            <td colspan="5" class="text-center">No Movies Found.</td>
+                            <td colspan="5" class="text-center">No table Found.</td>
                         </tr>
                     </ng-template>
                 </tbody>

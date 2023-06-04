@@ -1,4 +1,4 @@
-import { HttpClient,HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { catchError, retry } from 'rxjs/operators';
@@ -9,18 +9,13 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class EfccmService {
- // user!: UserModel;    
+  // user!: UserModel;    
   baseUrl = environment.baseUrl;
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient) {
   }
   found(body: any) {
-    // console.log('bodyuu11',body.efccm.length)
-    // console.log('bodyuu11',body.efccm)
-    //    body.efccm = "380023210022TOC 0       0       0       111115"
-    //     console.log('bodyuu22',body.efccm.length)
-    //     console.log('bodyuu22',body.efccm)
-    return this.httpClient.post(`${this.baseUrl}/foundefccm`,body)
+    return this.httpClient.post(`${this.baseUrl}/foundefccm`, body)
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EfccmComponent } from './efccm/efccm.component';
+import { BadgeComponent } from './badge/badge.component';
 
 const routes: Routes = [
   {
     path: 'efccm',component: EfccmComponent
+  },
+  {
+    path: 'badge',component: BadgeComponent
   },
 ];
 
