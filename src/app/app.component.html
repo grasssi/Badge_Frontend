@@ -26,9 +26,10 @@
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Movie</th>
-                        <th scope="col">Category</th>
+                        <th scope="col">Badge</th>
+                        <!-- <th scope="col">Category</th>
                         <th scope="col">Director</th>
-                        <th scope="col">Rating</th>
+                        <th scope="col">Rating</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -36,9 +37,10 @@
                         <tr *ngFor="let movie of movies; let i = index">
                             <th scope="row">{{ i + 1 }}</th>
                             <td>{{ movie.Movie }}</td>
-                            <td>{{ movie.Category }}</td>
+                            <td>{{ movie.Badge }}</td>
+                            <!-- <td>{{ movie.Category }}</td>
                             <td>{{ movie.Director }}</td>
-                            <td><span class="badge bg-warning text-dark">{{ movie.Rating }}</span></td>
+                            <td><span class="badge bg-warning text-dark">{{ movie.Rating }}</span></td> -->
                         </tr>
                     </ng-container>
                     <ng-template #elseBlock>
