@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { read, utils, writeFile } from 'xlsx';
-import { EfccmService } from './services/efccm.service';
 import { catchError, retry } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
+import { EfccmService } from '../services/efccm.service';
+
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-efccm',
+  templateUrl: './efccm.component.html',
+  styleUrls: ['./efccm.component.css']
 })
-export class AppComponent {
+export class EfccmComponent implements OnInit {
 
   efccmForm = new FormGroup({
     efccm: new FormControl('')
@@ -97,5 +99,8 @@ export class AppComponent {
       'Something bad happened; please try again later.');
   }
 
+  ngOnInit(): void {
+  }
 }
+
 
