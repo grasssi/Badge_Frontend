@@ -1,1 +1,56 @@
-<p>badge works!</p>
+<div class="animated fadeIn ">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Ajouter un nouveau badge</h6>
+                            <form [formGroup]="badgeForm" novalidate class="needs-validation">
+                                <div class="form-group">
+                                    <label class="col-form-label" for="base">Emetteur</label>
+                                    <select ng-model="selectedItem" class="form-control" placeholder="emt"
+                                        autocomplete="Emetteur" formControlName="emt" required>
+                                        <option value="">choisir un emetteur</option>
+                                        <option value="TELEPASS">TELEPASS</option>
+                                        <option value="DKV">DKV</option>
+                                        <option value="EUROTOLL">EUROTOLL</option>
+                                        <option value="TOTAL">TOTAL</option>
+                                        <option value="AXXES">AXXES</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label" for="modele">Modele</label>
+                                    <input class="form-control" id="modele" type="text" formControlName="modele"
+                                        placeholder="Modele" autocomplete="given-name" required autofocus />
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label" for="code_fab">Code du fabriquant</label>
+                                    <input class="form-control" id="code_fab" type="text" formControlName="code_fab"
+                                        placeholder="Code du fabriquant" autocomplete="given-name" required autofocus />
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label" for="Classe_equipement">Classe d'equipement</label>
+                                    <input class="form-control" id="Classe_equipement" type="text"
+                                        formControlName="classe_equipement" placeholder="Classe d'equipement"
+                                        autocomplete="family-name" required />
+
+                                    </div>
+                
+                                    <div class="form-group">
+                                        <button class="btn btn-primary mr-1" (click)="addBadge()">Submit</button>
+                                        <!-- <button class="btn btn-success mr-1" type="submit">Validate</button> -->
+                                        <button class="btn btn-danger" type="reset">Reset</button>
+                                    </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

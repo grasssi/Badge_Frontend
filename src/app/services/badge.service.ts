@@ -1,33 +1,27 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { catchError, retry } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-
+import { catchError, retry } from 'rxjs/operators';
+import { TableData } from './datatable.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EfccmService {
-  // user!: UserModel;    
+export class BadgeService {
   baseUrl = environment.baseUrl;
+  constructor(private httpClient: HttpClient) { }
 
-  constructor(private httpClient: HttpClient) {
-  }
-  found(body: any) {
-    return this.httpClient.post(`${this.baseUrl}/foundefccm`, body)
-  }
-
-  addefccm(body: any){
-    return this.httpClient.post(`${this.baseUrl}/addeffcm`, body)
-  
+  addbadge(body: any) {
+    return this.httpClient.post(`${this.baseUrl}/addbadge`, body)
   }
 
-
-
-
-
-
+  allbadges() {
+    return this.httpClient.get<TableData>(`${this.baseUrl}/allbadges`).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError)
+    )
+  }
 
 
   private handleError(error: HttpErrorResponse) {
@@ -45,5 +39,4 @@ export class EfccmService {
     return throwError(
       'Something bad happened; please try again later.');
   }
-
 }

@@ -1,0 +1,61 @@
+<div class="animated fadeIn ">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Ajouter un nouveau badge</h6>
+                            <form [formGroup]="efccmForm" novalidate class="needs-validation">
+                                <div class="form-group">
+                                    <label class="col-form-label" for="base">badge</label>
+                                    <select ng-model="selectedItem" class="form-control" placeholder="badge"
+                                        autocomplete="badge" formControlName="badge" required>
+                                        <option *ngFor="let badge of myRes" value="{{badge._id}}"> {{badge.emt}}
+                                            {{badge.modele}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label" for="code_payes">Code Pays ISO 3166-1</label>
+                                    <input class="form-control" id="Code Pays ISO 3166-1" type="text"
+                                        formControlName="code_payes" placeholder="Code Pays ISO 3166-1"
+                                        autocomplete="given-name" required autofocus />
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label" for="idf_emt">Identifiant Emetteur (dans le
+                                        pays)</label>
+                                    <input class="form-control" id="idf_emt" type="text" formControlName="idf_emt"
+                                        placeholder="Identifiant Emetteur" autocomplete="given-name" required
+                                        autofocus />
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label" for="toc">Type de Contrat fixé par émetteur
+                                        (TOC - Type Of Contract)</label>
+                                    <input class="form-control" id="toc" type="text" formControlName="toc"
+                                        placeholder="Type de Contrat " autocomplete="family-name" required />
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label" for="vcontext">Version du contexte</label>
+                                    <input class="form-control" id="vcontext" type="text" formControlName="vcontext"
+                                        placeholder="Version du contexte" autocomplete="family-name" required />
+
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary mr-1" (click)="addEfccm()">Submit</button>
+                                    <!-- <button class="btn btn-success mr-1" type="submit">Validate</button> -->
+                                    <button class="btn btn-danger" type="reset">Reset</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

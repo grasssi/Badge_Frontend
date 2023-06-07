@@ -7,6 +7,7 @@ import { EfccmComponent } from './efccm/efccm.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BadgeComponent } from './badge/badge.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TableefccmComponent } from './tableefccm/tableefccm.component';
 //import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -14,12 +15,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     EfccmComponent,
     BadgeComponent,
+    TableefccmComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
