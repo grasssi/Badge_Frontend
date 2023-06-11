@@ -6,12 +6,7 @@ import { throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 export interface UserData {
-  name: string;
-  email: string;
-  regDate: string;
-  city: string;
-  age: number;
-  type: string;
+
 }
 
 export interface TableData extends Array<UserData> { }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EfccmComponent } from './efccm/efccm.component';
 import { BadgeComponent } from './badge/badge.component';
 import { TableefccmComponent } from './tableefccm/tableefccm.component';
+import { ListefccmComponent } from './listefccm/listefccm.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,9 @@ const routes: Routes = [
   },
   {
     path: 'tableefccm',component: TableefccmComponent
+  },
+  {
+    path: 'listefccm',component: ListefccmComponent
   },
 ];
 

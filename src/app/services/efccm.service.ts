@@ -4,7 +4,19 @@ import { environment } from 'src/environments/environment';
 import { catchError, retry } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
-
+export interface AppData {
+  base: string,
+  service: string,
+  domaine: string,
+  fonction: string,
+  interne: string,
+  version: string,
+  horsres: string,
+  nbutilisateur: string,
+  application: string,
+  situation: string
+}
+export interface TableData extends Array<AppData> { }
 @Injectable({
   providedIn: 'root'
 })
@@ -21,6 +33,9 @@ export class EfccmService {
   addefccm(body: any){
     return this.httpClient.post(`${this.baseUrl}/addeffcm`, body)
   
+  }
+  allefccm(){
+    return this.httpClient.get(`${this.baseUrl}/alleffcms`)
   }
 
 

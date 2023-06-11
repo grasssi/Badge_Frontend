@@ -22,6 +22,9 @@
                                     <input class="form-control" id="Code Pays ISO 3166-1" type="text"
                                         formControlName="code_payes" placeholder="Code Pays ISO 3166-1"
                                         autocomplete="given-name" required autofocus />
+                                        <div *ngIf="efccmForm.get('monChamp')?.hasError('minlength') || efccmForm.get('monChamp')?.hasError('maxlength')">
+                                            Le champ doit contenir exactement 10 caractères.
+                                          </div>
 
                                 </div>
                                 <div class="form-group">
@@ -30,7 +33,9 @@
                                     <input class="form-control" id="idf_emt" type="text" formControlName="idf_emt"
                                         placeholder="Identifiant Emetteur" autocomplete="given-name" required
                                         autofocus />
-
+                                        <div *ngIf="efccmForm.get('monChamp')?.hasError('minlength') || efccmForm.get('monChamp')?.hasError('maxlength')">
+                                            Le champ doit contenir exactement 10 caractères.
+                                          </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label" for="toc">Type de Contrat fixé par émetteur
@@ -43,7 +48,9 @@
                                     <label class="col-form-label" for="vcontext">Version du contexte</label>
                                     <input class="form-control" id="vcontext" type="text" formControlName="vcontext"
                                         placeholder="Version du contexte" autocomplete="family-name" required />
-
+                                        <div *ngIf="efccmForm.get('monChamp')?.hasError('minlength') || efccmForm.get('monChamp')?.hasError('maxlength')">
+                                            Le champ doit contenir exactement 10 caractères.
+                                          </div>
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-primary mr-1" (click)="addEfccm()">Submit</button>

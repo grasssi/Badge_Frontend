@@ -98,3 +98,9 @@
     padding: 15px;
     width: 120px;
 }
+.input-with-dashes::placeholder {
+  
+  font-family: monospace; /* Utilisez une police monospace pour une largeur uniforme des caractères */
+  color: #999999; /* Couleur grise pour les tirets */
+  letter-spacing: 1px; /* Espacement entre les caractères */
+}

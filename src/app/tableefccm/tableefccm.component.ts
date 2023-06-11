@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BadgeService } from '../services/badge.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EfccmService } from '../services/efccm.service';
 
@@ -14,11 +14,11 @@ export class TableefccmComponent implements OnInit {
 
   myRes: any;
   efccmForm = new FormGroup({
-    code_payes: new FormControl(''),
-    idf_emt: new FormControl(''),
-    toc: new FormControl(''),
-    vcontext: new FormControl(''),
-    badge: new FormControl('')
+    code_payes: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]),
+    idf_emt: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
+    toc: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
+    vcontext: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]),
+    badge: new FormControl('', [Validators.required])
   })
 
   constructor(

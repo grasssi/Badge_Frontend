@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BadgeComponent } from './badge/badge.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TableefccmComponent } from './tableefccm/tableefccm.component';
+import { ListefccmComponent } from './listefccm/listefccm.component';
 //import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { TableefccmComponent } from './tableefccm/tableefccm.component';
     EfccmComponent,
     BadgeComponent,
     TableefccmComponent,
+    ListefccmComponent,
   ],
   imports: [
     BrowserModule,
